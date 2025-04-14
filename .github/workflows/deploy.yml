@@ -85,9 +85,7 @@ jobs:
       - name: download-artifacts
         uses: actions/download-artifact@v4
         with:
-          name: pkg-*
           path: artifacts
-          merge-multiple: true
       
       - name: create-release
         id: create_release
