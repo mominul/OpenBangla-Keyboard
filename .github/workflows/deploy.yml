@@ -94,7 +94,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.get_version.outputs.RELEASE_VERSION }}
           name: ${{ steps.get_version.outputs.RELEASE_VERSION }}
-          artifacts: "artifacts/*"
+          artifacts: "artifacts/*/*"
           allowUpdates: true
           draft: true
           body: |
