@@ -87,7 +87,6 @@ jobs:
         with:
           name: pkg-*
           path: artifacts
-          pattern: pkg-*
           merge-multiple: true
       
       - name: create-release
