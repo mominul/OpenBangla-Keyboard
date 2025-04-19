@@ -8,7 +8,7 @@ makeDeb () {
     apt-get -y install build-essential pkg-config libibus-1.0-dev libfcitx5core-dev cmake libzstd-dev ninja-build curl qtbase5-dev qtbase5-dev-tools file
     curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable
     
-    cmake -H"$GITHUB_WORKSPACE" -B/build -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DENABLE_BOTH=ON -DCPACK_GENERATOR=DEB
+    cmake -H"$GITHUB_WORKSPACE" -B/build -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DENABLE_BOTH=ON -DCMAKE_BUILD_TYPE="Debug" -DCPACK_GENERATOR=DEB
 
     ninja package -C /build
     RELEASE_FILE="/build/${RELEASE_FILENAME}"
@@ -19,7 +19,7 @@ makeRpmFedora () {
     dnf install -y --allowerasing @buildsys-build cmake ibus-devel fcitx5-devel libzstd-devel qt5-qtdeclarative-devel ninja-build curl
     curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable
     
-    cmake -H"$GITHUB_WORKSPACE" -B/build -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DENABLE_BOTH=ON -DCPACK_GENERATOR=RPM
+    cmake -H"$GITHUB_WORKSPACE" -B/build -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DENABLE_BOTH=ON -DCMAKE_BUILD_TYPE="Debug" -DCPACK_GENERATOR=RPM
 
     ninja package -C /build
     RELEASE_FILE="/build/${RELEASE_FILENAME}"
@@ -33,7 +33,7 @@ makeRpmOpenSuse () {
     zypper install -y libQt5Core-devel libQt5Widgets-devel libQt5Network-devel libzstd-devel cmake ninja ibus-devel fcitx5-devel gcc curl rpm-build
     curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable
     
-    cmake -H"$GITHUB_WORKSPACE" -B/build -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DENABLE_BOTH=ON -DCPACK_GENERATOR=RPM
+    cmake -H"$GITHUB_WORKSPACE" -B/build -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DENABLE_BOTH=ON -DCMAKE_BUILD_TYPE="Debug" -DCPACK_GENERATOR=RPM
 
     ninja package -C /build
     RELEASE_FILE="/build/${RELEASE_FILENAME}"
